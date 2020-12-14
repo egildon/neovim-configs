@@ -32,9 +32,7 @@ call plug#end()
 " vim-bootstrap 
 
 " vscode
-if !exists('g:vscode')" This tells VSCODE not to run this section between the 'if' and 'endif'
 
-endif
 "*****************************************************************************
 "" Vim-PLug core
 "*****************************************************************************
@@ -71,7 +69,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdcommenter'
-"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'neomake/neomake'
 
@@ -98,7 +96,7 @@ Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 
 Plug 'bfredl/nvim-ipy' 
 "Plug 'szymonmaszke/vimpyter' 
-"Plug 'jupyter-vim/jupyter-vim'
+Plug 'jupyter-vim/jupyter-vim'
 Plug 'benmills/vimux' 
 Plug 'julienr/vimux-pyutils'
 Plug 'ivanov/vim-ipython' 
@@ -114,6 +112,8 @@ Plug 'sheerun/vim-polyglot'
 "ipython 
 
 Plug 'bfredl/nvim-ipy' 
+Plug 'neovim/nvim-lspconfig'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 "*****************************************
 "****coc-todolist config
@@ -234,16 +234,7 @@ set foldlevel=1         "this is just what i use
 "*****************************************************************************
 syntax on
 set ruler
-"set number rnu
-
-""This sets up Hybrid peeking line numbers 
-:set number relativenumber
-
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
+set number
 
 let no_buffers_menu=1
 silent! colorscheme molokai
@@ -266,8 +257,6 @@ else
   let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
-
-
 
   
 endif
@@ -398,9 +387,6 @@ set autoread
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
-""Debugging
-:map <silent> <F6> :sp term://python3 % <CR> 
-:map <silent> <F7> :tab sp term://pudb3 % <CR>
 
 "" Split
 set splitbelow
@@ -777,4 +763,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Neomake Config
 " When writing a buffer (no delay).
 "call neomake#configure#automake('w')
+
+
 
